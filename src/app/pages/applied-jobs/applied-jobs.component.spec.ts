@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaincontentareaComponent } from './maincontentarea.component';
+import { AppliedJobsComponent } from './applied-jobs.component';
 
-describe('MaincontentareaComponent', () => {
-  let component: MaincontentareaComponent;
-  let fixture: ComponentFixture<MaincontentareaComponent>;
+describe('AppliedJobsComponent', () => {
+  let component: AppliedJobsComponent;
+  let fixture: ComponentFixture<AppliedJobsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MaincontentareaComponent]
+      imports: [AppliedJobsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MaincontentareaComponent);
+    fixture = TestBed.createComponent(AppliedJobsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

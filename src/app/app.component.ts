@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MaincontentareaComponent } from './maincontentarea/maincontentarea.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { Component, OnInit, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MaincontentareaComponent,SidebarComponent],
+  imports: [RouterOutlet,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'angular-tutorial';
+export class AppComponent implements OnInit {
+  activeRoute = signal<string>('/');
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    console.log('loading new page')
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const navEnd = event as NavigationEnd;
+        console.log({navEnd})
+        this.activeRoute.set(navEnd.urlAfterRedirects);
+      });
+  }
 }
-
-

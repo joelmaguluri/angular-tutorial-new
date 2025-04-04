@@ -1,15 +1,24 @@
-
-
-
 <main class="main">
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/about">About</a>
+  <nav class="navbar flex gap-md bg-white py-md px-lg ">
+    <a href="/" 
+    class="nav-link active" 
+    [class.active]="activeRoute() === '/'">Applications</a>
+
+ <a href="/interviews" 
+    class="nav-link" 
+    [class.active]="activeRoute() === '/interviews'">Interview Experiences</a>
+
+ <a href="/references" 
+    class="nav-link" 
+    [class.active]="activeRoute() === '/references'">References Given</a>
+
+ <a href="/dashboard" 
+    class="nav-link" 
+    [class.active]="activeRoute() === '/dashboard'">Dashboard</a>
   </nav>
-  
-  
+  <div class="bg-red">
+    <router-outlet></router-outlet>
+  </div>
+
+
 </main>
-<router-outlet></router-outlet>
-
-
-
