@@ -1,1 +1,23 @@
-<p>applied-jobs works!</p>
+<table class="styled-table">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Date Applied</th>
+        <th>Role</th>
+        <th>Resume Applied With</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr 
+        *ngFor="let job of appliedJobs"
+        [class.highlight]="selectedJobId() === job.id"
+        (click)="highlightRow(job.id)"
+      >
+        <td>{{ job.CompanyName }}</td>
+        <td>{{ job.DateApplied }}</td>
+        <td>{{ job.Role }}</td>
+        <td>{{ job.ResumeAppliedWith }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
