@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-applied-jobs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './applied-jobs.component.html',
   styleUrl: './applied-jobs.component.css'
 })
 export class AppliedJobsComponent {
   selectedJobId = signal<number | null>(null);
+  searchTerm: string = '';
 
   appliedJobs = [
     {
@@ -86,5 +88,29 @@ export class AppliedJobsComponent {
   highlightRow(id: number) {
     this.selectedJobId.set(id);
   }
+
+
+filteredJobs() {
+  if (!this.searchTerm) return this.appliedJobs;
+
+  const term = this.searchTerm.toLowerCase();
+  return this.appliedJobs.filter(job =>
+    job.CompanyName.toLowerCase().includes(term) ||
+    job.Role.toLowerCase().includes(term) ||
+    job.ResumeAppliedWith.toLowerCase().includes(term)
+  );
+}
+
+isHighlighted(job: any) {
+  if (!this.searchTerm) return false;
+
+  const term = this.searchTerm.toLowerCase();
+
+  return (
+    job.CompanyName.toLowerCase().includes(term) ||
+    job.Role.toLowerCase().includes(term) ||
+    job.ResumeAppliedWith.toLowerCase().includes(term)
+  );
+}
 
 }
