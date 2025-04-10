@@ -1,29 +1,42 @@
-<input
-  type="text"
-  placeholder="Search applications..."
-  [(ngModel)]="searchTerm"
-  class="search-box"
-/>
+<div class="container">
+  <div class="search-row">
+    <input
+      type="text"
+      placeholder="Search by company name, role or ID..."
+      [(ngModel)]="searchTerm"
+      class="search-box"
+    />
+    <button class="search-button" (click)="performSearch()">Search</button>
+  </div>
 
-<table class="styled-table">
-  <thead>
-    <tr>
-      <th>Company Name</th>
-      <th>Date Applied</th>
-      <th>Role</th>
-      <th>Resume Applied With</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let job of filteredJobs()"
-      [class.highlight]="isHighlighted(job)"
-      (click)="highlightRow(job.id)"
-    >
-      <td>{{ job.CompanyName }}</td>
-      <td>{{ job.DateApplied }}</td>
-      <td>{{ job.Role }}</td>
-      <td>{{ job.ResumeAppliedWith }}</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Date Applied</th>
+        <th>Role</th>
+        <th>Resume Applied With</th>
+        <th>Status</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let job of appliedJobs"
+        [class.highlight]="isHighlighted(job)"
+        [class.faded]="isFaded(job)"
+        (click)="highlightRow(job.id)"
+      >
+        <td>{{ job.CompanyName }}</td>
+        <td>{{ job.DateApplied }}</td>
+        <td>{{ job.Role }}</td>
+        <td>{{ job.ResumeAppliedWith }}</td>
+        <td [ngClass]="getStatusClass(job)" class="status-cell">
+          {{ job.Status }}
+        </td>
+        
+
+      </tr>
+    </tbody>
+  </table>
+</div>
