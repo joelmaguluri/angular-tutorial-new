@@ -3,6 +3,7 @@ import { AppliedJobsComponent } from './pages/applied-jobs/applied-jobs.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { InterviewExperiencesComponent } from './pages/interview-experiences/interview-experiences.component';
 import { ReferencesComponent } from './pages/references/references.component';
+import { CompanyInfoComponent } from './pages/company-info/company-info.component';
 
 
 export const routes: Routes = [
@@ -10,4 +11,5 @@ export const routes: Routes = [
     { path: 'interviews', component: InterviewExperiencesComponent },
     { path: 'references', component: ReferencesComponent },
     { path: 'dashboard', component: DashboardComponent },
+    { path: 'company/:companyName', component: CompanyInfoComponent },
   ];

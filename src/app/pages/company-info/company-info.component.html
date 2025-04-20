@@ -1,0 +1,20 @@
+<div class="p-4">
+    <h2 class="text-2xl font-bold capitalize">Company: {{ companyName }}</h2>
+    <p class="mt-2">Jobs Applied: <strong>{{ jobsApplied }}</strong></p>
+  
+    <div class="mt-4 grid grid-cols-3 gap-4">
+      <div class="p-3 bg-blue-100 rounded">
+        <p>Interview Rate</p>
+        <h3 class="text-xl font-semibold">{{ metrics.interviewRate }}</h3>
+      </div>
+      <div class="p-3 bg-green-100 rounded">
+        <p>Offer Rate</p>
+        <h3 class="text-xl font-semibold">{{ metrics.offerRate }}</h3>
+      </div>
+      <div class="p-3 bg-red-100 rounded">
+        <p>Rejection Rate</p>
+        <h3 class="text-xl font-semibold">{{ metrics.rejectionRate }}</h3>
+      </div>
+    </div>
+  </div>
+  
